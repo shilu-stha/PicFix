@@ -1,5 +1,8 @@
 package com.hackathon.picfix;
 
+import android.graphics.Color;
+import android.graphics.Point;
+
 /**
  * Created by leapfrog on 7/3/15.
  */
@@ -46,6 +49,54 @@ public interface PicFixViewInterface {
      * */
 
     void applySaturationFilter(int saturationLevel);
+
+    /**
+     * set snow effect to imageview
+     * */
+    void applySnowEffect();
+
+
+    /**
+     * set flea effect to the image
+     * */
+    void applyFleaEffect();
+
+
+    /**
+     * set tint image
+     * @param tintDegree - degree by how much tint is to be applied
+     * */
+
+    void setTintImage(int tintDegree);
+
+//    /**
+//     * replace the color of image
+//     * @param fromColor - value color from which replace starts
+//     *  @param targetColor - color value to which color needs to be replaced
+//     * */
+//    void replaceColor(int fromColor, int targetColor);
+
+    /**
+     * flip the image
+     * @param flipType - type of the flip horizontal or vertical
+     * */
+
+    void flipImage(int flipType);
+
+    /**
+     * sets the watermark to the image
+     * @param watermark - string to be set as watermark
+     * @param location - {@link Point} where watermark will be displayed
+     * @param color - {@link Color} font color to be set as watermark
+     * @param alpha - alpha to be set to watermark
+     * @param size - size of the watermark text
+     * @param underline - set true if underline needed else false
+     * */
+    void setWaterMark(String watermark, Point location, int color, int alpha, int size, boolean underline);
+
+
+
+
 
 
 }
