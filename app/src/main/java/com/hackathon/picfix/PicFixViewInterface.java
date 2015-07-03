@@ -95,7 +95,7 @@ public interface PicFixViewInterface {
     void setWaterMark(String watermark, Point location, int color, int alpha, int size, boolean underline);
 
 
-
+    void setFrames(Integer[] framesId);
 
 
 

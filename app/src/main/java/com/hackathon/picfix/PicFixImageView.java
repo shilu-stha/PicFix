@@ -2,15 +2,14 @@ package com.hackathon.picfix;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
+import android.graphics.BitmapFactory;
+import android.graphics.ColorFilter;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.hackathon.picfix.effect.BlurBuilder;
 import com.hackathon.picfix.effect.BrightnessEffect;
@@ -24,19 +23,23 @@ import com.hackathon.picfix.effect.WaterMark;
 import com.hackathon.picfix.filters.BlackFilter;
 import com.hackathon.picfix.filters.HueFilter;
 import com.hackathon.picfix.filters.SaturationFilter;
-import com.hackathon.picfix.utils.Constants;
+import com.hackathon.picfix.frames.CustomFrameInterface;
+import com.hackathon.picfix.utils.BitmapManipulation;
 
-import java.util.Random;
+import java.io.ByteArrayOutputStream;
 
 /**
  * Created by leapfrog on 7/3/15.
  */
-public class PicFixImageView extends ImageView implements PicFixViewInterface {
+public class PicFixImageView extends ImageView implements PicFixViewInterface, CustomFrameInterface {
 
     float blurRadius = 1;
     Drawable drawable;
     Context context;
     Bitmap definedBitmap;
+    private Integer[] mFrames;
+    private RelativeLayout.LayoutParams mOverlayParams;
+    private PicFixImageView imgOverlayFrame;
 
     public PicFixImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -100,6 +103,8 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
 
     }
 
+
+
     @Override
     public void applySaturationFilter(int saturationLevel) {
 
@@ -140,5 +145,71 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
 
         Bitmap waterMarkedBitmap = WaterMark.getWaterMarked(definedBitmap, watermark, location, color, alpha, size, underline);
         this.setImageBitmap(waterMarkedBitmap);
+    }
+
+    @Override
+    public void setFrames(Integer[] framesId) {
+        mFrames = framesId;
+    }
+
+    @Override
+    public Integer[] getFrames() {
+        return mFrames;
+    }
+
+    @Override
+    public void createFrameOverlay(Context context, PicFixImageView frameImageView, PicFixImageView selectedImageView) {
+//        mContext = context;
+        imgOverlayFrame = frameImageView;
+        mOverlayParams = new RelativeLayout.LayoutParams(selectedImageView.getWidth(), selectedImageView.getHeight());
+
+        mOverlayParams.addRule(RelativeLayout.ALIGN_LEFT, selectedImageView.getId());
+        mOverlayParams.addRule(RelativeLayout.ALIGN_RIGHT, selectedImageView.getId());
+        mOverlayParams.addRule(RelativeLayout.ALIGN_TOP, selectedImageView.getId());
+        mOverlayParams.addRule(RelativeLayout.ALIGN_BOTTOM, selectedImageView.getId());
+        mOverlayParams.addRule(RelativeLayout.ABOVE, selectedImageView.getId());
+
+        imgOverlayFrame.setImageResource( mFrames[0]);
+        imgOverlayFrame.setScaleType(ScaleType.FIT_XY);
+        imgOverlayFrame.setLayoutParams(mOverlayParams);
+
+    }
+
+    @Override
+    public void setSelectedFrame(int position) {
+        imgOverlayFrame.setImageBitmap(BitmapManipulation.decodeSampledBitmapFromResourcePreview(
+                context.getResources(), mFrames[position]));
+        imgOverlayFrame.setScaleType(ImageView.ScaleType.FIT_XY);
+        imgOverlayFrame.setLayoutParams(mOverlayParams);
+
+    }
+
+    @Override
+    public Bitmap getFramedBitmap(PicFixImageView selectedImageView, int position) {
+            ByteArrayOutputStream bytesOfImage = new ByteArrayOutputStream();
+            // compressing to 10 percent
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            options.inSampleSize = 2;
+
+            // Decode bitmap with inSampleSize set
+            options.inJustDecodeBounds = false;
+
+            Bitmap bitmapOverlayPicture = BitmapFactory.decodeResource(
+                    getResources(), mFrames[position], options);
+
+            Bitmap bitmapSelectedPicture = ((BitmapDrawable)selectedImageView.getDrawable()).getBitmap();
+
+            bitmapOverlayPicture = bitmapOverlayPicture.createScaledBitmap(bitmapOverlayPicture, bitmapSelectedPicture.getWidth(), bitmapSelectedPicture.getHeight(), true);
+
+            Bitmap bitmap = BitmapManipulation.overlapBitmaps(bitmapSelectedPicture, bitmapOverlayPicture);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytesOfImage);
+
+        return bitmap;
+    }
+
+    public ColorFilter applyHue(int i) {
+        return HueFilter.adjustHue(i);
     }
 }
