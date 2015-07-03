@@ -127,7 +127,7 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
 
     @Override
     public void flipImage(int flipType) {
-        Bitmap flippedBitmap = FlipImage.getFlipedImage(definedBitmap, flipType);
+        Bitmap flippedBitmap = FlipImage.getFlippedImage(definedBitmap, flipType);
         this.setImageBitmap(flippedBitmap);
     }
 

@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Class to provide saturation effect to the bitmap
  */
 public class SaturationFilter {
 

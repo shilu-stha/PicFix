@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * class to set Brightness effect to the image view
  */
 public class BrightnessEffect {
 

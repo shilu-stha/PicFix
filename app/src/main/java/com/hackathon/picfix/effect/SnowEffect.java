@@ -8,7 +8,7 @@ import com.hackathon.picfix.utils.Constants;
 import java.util.Random;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Class to set Snow Effect in Image view
  */
 public class SnowEffect {
 
@@ -22,7 +22,7 @@ public class SnowEffect {
         // random object
         Random random = new Random();
 
-        int R, G, B, index = 0, thresHold = 0;
+        int R, G, B, index = 0, threshold = 0;
         // iteration through pixels
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
@@ -33,8 +33,8 @@ public class SnowEffect {
                 G = Color.green(pixels[index]);
                 B = Color.blue(pixels[index]);
                 // generate threshold
-                thresHold = random.nextInt(Constants.COLOR_MAX);
-                if (R > thresHold && G > thresHold && B > thresHold) {
+                threshold = random.nextInt(Constants.COLOR_MAX);
+                if (R > threshold && G > threshold && B > threshold) {
                     pixels[index] = Color.rgb(Constants.COLOR_MAX, Constants.COLOR_MAX, Constants.COLOR_MAX);
                 }
             }

@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Provides Hue Filter effect to the bitmap created
  */
 public class HueFilter {
 

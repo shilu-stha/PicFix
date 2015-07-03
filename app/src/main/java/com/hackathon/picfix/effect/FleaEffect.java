@@ -8,7 +8,7 @@ import com.hackathon.picfix.utils.Constants;
 import java.util.Random;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * class to set Flea Effect in the bitmap
  */
 public class FleaEffect {
 
