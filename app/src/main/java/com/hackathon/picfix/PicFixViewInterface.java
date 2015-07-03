@@ -1,5 +1,6 @@
 package com.hackathon.picfix;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
 
@@ -120,5 +121,12 @@ public interface PicFixViewInterface {
      */
     void doCrop(float startX, float startY, int width, int height);
 
+    /**
+     * convert bitmap to sketch bitmap
+     *
+     * @param type      - 3 for negative, 4 for pencil sketch, 5 for color pencil sketch
+     * @param threshold - integer value passed by user
+     */
+    void sketch(int type, int threshold);
 
 }

@@ -35,7 +35,8 @@ public class MainActivity extends ActionBarActivity {
 //        asd.applySnowEffect();
 //        asd.applyFleaEffect();
 //        asd.setTintImage(20);
-        asd.flipImage(Constants.FLIP_VERTICAL);
+//        asd.flipImage(Constants.FLIP_VERTICAL);
+//        asd.sketch();
 //        asd.setWaterMark("Hackathon", location, Color.BLACK, 10, 30, false);
     }
 }
