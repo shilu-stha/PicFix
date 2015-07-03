@@ -49,15 +49,12 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
 
     @Override
     public void setRotationTo(float rotationDegree) {
-//        invalidate();
         Bitmap rotatedBitmap = RotationEffect.getRotatedBitmap(context, definedBitmap, rotationDegree);
         this.setImageBitmap(rotatedBitmap);
-
     }
 
     @Override
     public void setBlur(float radius) {
-//        this.invalidate();
 
         if (radius < 1) {
             this.blurRadius = 1;
@@ -125,7 +122,6 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
     public void setTintImage(int tintDegree) {
 
         Bitmap tintedBitmap = TintImage.getTintImage(definedBitmap, tintDegree);
-
         this.setImageBitmap(tintedBitmap);
     }
 
@@ -140,5 +136,19 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
 
         Bitmap waterMarkedBitmap = WaterMark.getWaterMarked(definedBitmap, watermark, location, color, alpha, size, underline);
         this.setImageBitmap(waterMarkedBitmap);
+    }
+
+    @Override
+    public void resizeImage(int width, int height) {
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(definedBitmap, width, height, true);
+
+        this.setImageBitmap(resizedBitmap);
+    }
+
+    @Override
+    public void doCrop(float startX, float startY, int width, int height) {
+        Bitmap resizedbitmap1 = Bitmap.createBitmap(definedBitmap, (int) startX, (int) startY, width, height);
+
+        this.setImageBitmap(resizedbitmap1);
     }
 }
