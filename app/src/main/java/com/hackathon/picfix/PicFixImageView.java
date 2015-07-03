@@ -2,10 +2,6 @@ package com.hackathon.picfix;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -25,19 +21,18 @@ import com.hackathon.picfix.effect.WaterMark;
 import com.hackathon.picfix.filters.BlackFilter;
 import com.hackathon.picfix.filters.HueFilter;
 import com.hackathon.picfix.filters.SaturationFilter;
-import com.hackathon.picfix.utils.Constants;
-
-import java.util.Random;
 
 /**
- * Created by leapfrog on 7/3/15.
+ *
+ * extends {@link ImageView} class to apply all the image editor function
+ * {@link PicFixViewInterface} is implemented to pass all the editor function
  */
 public class PicFixImageView extends ImageView implements PicFixViewInterface {
 
-    float blurRadius = 1;
-    Drawable drawable;
-    Context context;
-    Bitmap definedBitmap;
+    private float blurRadius = 1;
+    private final Drawable drawable;
+    private final Context context;
+    private final Bitmap definedBitmap;
 
     public PicFixImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -148,9 +143,9 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
 
     @Override
     public void doCrop(float startX, float startY, int width, int height) {
-        Bitmap resizedbitmap1 = Bitmap.createBitmap(definedBitmap, (int) startX, (int) startY, width, height);
+        Bitmap resizedBitmap = Bitmap.createBitmap(definedBitmap, (int) startX, (int) startY, width, height);
 
-        this.setImageBitmap(resizedbitmap1);
+        this.setImageBitmap(resizedBitmap);
     }
 
     @Override

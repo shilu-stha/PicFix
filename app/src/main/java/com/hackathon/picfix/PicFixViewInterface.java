@@ -1,16 +1,15 @@
 package com.hackathon.picfix;
 
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
 
 /**
- * Created by leapfrog on 7/3/15.
+ *Interface to handle all the image editor function
  */
 public interface PicFixViewInterface {
 
     /**
-     * Enable rotation for the imageview
+     * Enable rotation for the bitmap
      *
      * @param rotationDegree - Degree to rotate image, range 0-360
      */
@@ -18,28 +17,28 @@ public interface PicFixViewInterface {
 
 
     /**
-     * Enable blur of the imageview
+     * Enable blur of the bitmap
      *
      * @param radius - Radius to blur the image view
      */
     void setBlur(float radius);
 
     /**
-     * Set brightness to the imageview
+     * Set brightness to the bitmap
      *
-     * @param brightnessValue - value by how much brightness is set to the imageview
+     * @param brightnessValue - value by how much brightness is set to the bitmap
      */
     void setBrightness(int brightnessValue);
 
     /**
-     * set shading effect to imageview
+     * set shading effect to bitmap
      *
      * @param shadingColor - integer value of the color by which the shading effect is to be given
      */
     void setShading(int shadingColor);
 
     /**
-     * set black filter to imageview
+     * set black filter to bitmap
      */
     void applyBlackFilter();
 
@@ -51,13 +50,13 @@ public interface PicFixViewInterface {
     /**
      * set saturation filter
      *
-     * @param saturationLevel - integer to set saturation level for imageview
+     * @param saturationLevel - integer to set saturation level for bitmap
      */
 
     void applySaturationFilter(int saturationLevel);
 
     /**
-     * set snow effect to imageview
+     * set snow effect to bitmap
      */
     void applySnowEffect();
 
@@ -112,7 +111,7 @@ public interface PicFixViewInterface {
     void resizeImage(int width, int height);
 
     /**
-     * crop the bitmap to from given x and y position upto the given height and width.
+     * crop the bitmap to from given x and y position up to the given height and width.
      *
      * @param startX - float value passed by user
      * @param startY - float value passed by user
