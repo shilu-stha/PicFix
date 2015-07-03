@@ -18,6 +18,7 @@ import com.hackathon.picfix.effect.FleaEffect;
 import com.hackathon.picfix.effect.FlipImage;
 import com.hackathon.picfix.effect.RotationEffect;
 import com.hackathon.picfix.effect.ShadingEffect;
+import com.hackathon.picfix.effect.Sketch;
 import com.hackathon.picfix.effect.SnowEffect;
 import com.hackathon.picfix.effect.TintImage;
 import com.hackathon.picfix.effect.WaterMark;
@@ -150,5 +151,10 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface {
         Bitmap resizedbitmap1 = Bitmap.createBitmap(definedBitmap, (int) startX, (int) startY, width, height);
 
         this.setImageBitmap(resizedbitmap1);
+    }
+
+    @Override
+    public void sketch(int type, int threshold) {
+        this.setImageBitmap(Sketch.changeToSketch(definedBitmap, type, threshold));
     }
 }
