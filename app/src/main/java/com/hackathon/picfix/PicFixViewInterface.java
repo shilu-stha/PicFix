@@ -1,6 +1,7 @@
 package com.hackathon.picfix;
 
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Point;
 
 /**
@@ -41,11 +42,6 @@ public interface PicFixViewInterface {
      * set black filter to bitmap
      */
     void applyBlackFilter();
-
-    /**
-     * set Hue filter
-     */
-    void applyHueFilter(int hueLevel);
 
     /**
      * set saturation filter
@@ -127,5 +123,12 @@ public interface PicFixViewInterface {
      * @param threshold - integer value passed by user
      */
     void sketch(int type, int threshold);
+
+    /**
+     * set hue filter
+     * @param huelevel
+     * @return
+     */
+    ColorFilter applyHue(int huelevel);
 
 }

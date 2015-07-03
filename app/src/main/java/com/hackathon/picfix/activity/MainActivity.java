@@ -36,11 +36,11 @@ public class MainActivity extends Activity {
 
 //        asd.setRotationTo(67);
 //        asd.setBlur(25);
-        asd.setBrightness(80);
+//        asd.setBrightness(80);
 //        asd.setShading(Color.parseColor("#00aa32"));
 //        asd.applyBlackFilter();/
 //        asd.applyHueFilter(50);
-//        asd.setColorFilter(asd.applyHue(50));
+        asd.setColorFilter(asd.applyHue(50));
 //        asd.adjustHue(50);
 //        asd.applySaturationFilter(80);
 //        asd.applySnowEffect();

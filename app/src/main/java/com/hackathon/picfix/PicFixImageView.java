@@ -96,16 +96,6 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     }
 
     @Override
-    public void applyHueFilter(int hueLevel) {
-
-        Bitmap huedBitmap = HueFilter.getHuedBitmap(definedBitmap, hueLevel);
-        this.setImageBitmap(huedBitmap);
-
-    }
-
-
-
-    @Override
     public void applySaturationFilter(int saturationLevel) {
 
         Bitmap saturatedBitmap = SaturationFilter.getSaturatedFilter(definedBitmap, saturationLevel);
@@ -168,7 +158,7 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
         mOverlayParams.addRule(RelativeLayout.ALIGN_BOTTOM, selectedImageView.getId());
         mOverlayParams.addRule(RelativeLayout.ABOVE, selectedImageView.getId());
 
-        imgOverlayFrame.setImageResource( mFrames[0]);
+        imgOverlayFrame.setImageResource(mFrames[0]);
         imgOverlayFrame.setScaleType(ScaleType.FIT_XY);
         imgOverlayFrame.setLayoutParams(mOverlayParams);
 
@@ -208,9 +198,6 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
         return bitmap;
     }
 
-    public ColorFilter applyHue(int i) {
-        return HueFilter.adjustHue(i);
-    }
 
     public void resizeImage(int width, int height) {
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(definedBitmap, width, height, true);
@@ -228,5 +215,10 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     @Override
     public void sketch(int type, int threshold) {
         this.setImageBitmap(Sketch.changeToSketch(definedBitmap, type, threshold));
+    }
+
+    @Override
+    public ColorFilter applyHue(int huelevel) {
+            return HueFilter.adjustHue(huelevel);
     }
 }
