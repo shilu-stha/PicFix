@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Class to provide rotated effect to the bitmap
  */
 public class RotationEffect {
 
@@ -17,7 +17,7 @@ public class RotationEffect {
         matrix.postRotate(rotationDegree);
 
         // return new bitmap rotated using matrix
-        Bitmap rotatedBitmap =  Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
-        return rotatedBitmap;
+
+        return Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
     }
 }

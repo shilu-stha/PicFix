@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import com.hackathon.picfix.utils.Constants;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Class to provide tint effect to bitmap
  */
 public class TintImage {
 

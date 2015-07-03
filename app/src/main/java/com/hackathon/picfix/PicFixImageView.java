@@ -17,6 +17,7 @@ import com.hackathon.picfix.effect.FleaEffect;
 import com.hackathon.picfix.effect.FlipImage;
 import com.hackathon.picfix.effect.RotationEffect;
 import com.hackathon.picfix.effect.ShadingEffect;
+import com.hackathon.picfix.effect.Sketch;
 import com.hackathon.picfix.effect.SnowEffect;
 import com.hackathon.picfix.effect.TintImage;
 import com.hackathon.picfix.effect.WaterMark;
@@ -29,17 +30,19 @@ import com.hackathon.picfix.utils.BitmapManipulation;
 import java.io.ByteArrayOutputStream;
 
 /**
- * Created by leapfrog on 7/3/15.
+ *
+ * extends {@link ImageView} class to apply all the image editor function
+ * {@link PicFixViewInterface} is implemented to pass all the editor function
  */
 public class PicFixImageView extends ImageView implements PicFixViewInterface, CustomFrameInterface {
 
-    float blurRadius = 1;
-    Drawable drawable;
-    Context context;
-    Bitmap definedBitmap;
     private Integer[] mFrames;
     private RelativeLayout.LayoutParams mOverlayParams;
     private PicFixImageView imgOverlayFrame;
+    private float blurRadius = 1;
+    private final Drawable drawable;
+    private final Context context;
+    private final Bitmap definedBitmap;
 
     public PicFixImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -52,15 +55,12 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
     @Override
     public void setRotationTo(float rotationDegree) {
-//        invalidate();
         Bitmap rotatedBitmap = RotationEffect.getRotatedBitmap(context, definedBitmap, rotationDegree);
         this.setImageBitmap(rotatedBitmap);
-
     }
 
     @Override
     public void setBlur(float radius) {
-//        this.invalidate();
 
         if (radius < 1) {
             this.blurRadius = 1;
@@ -130,13 +130,12 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     public void setTintImage(int tintDegree) {
 
         Bitmap tintedBitmap = TintImage.getTintImage(definedBitmap, tintDegree);
-
         this.setImageBitmap(tintedBitmap);
     }
 
     @Override
     public void flipImage(int flipType) {
-        Bitmap flippedBitmap = FlipImage.getFlipedImage(definedBitmap, flipType);
+        Bitmap flippedBitmap = FlipImage.getFlippedImage(definedBitmap, flipType);
         this.setImageBitmap(flippedBitmap);
     }
 
@@ -211,5 +210,23 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
     public ColorFilter applyHue(int i) {
         return HueFilter.adjustHue(i);
+    }
+
+    public void resizeImage(int width, int height) {
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(definedBitmap, width, height, true);
+
+        this.setImageBitmap(resizedBitmap);
+    }
+
+    @Override
+    public void doCrop(float startX, float startY, int width, int height) {
+        Bitmap resizedBitmap = Bitmap.createBitmap(definedBitmap, (int) startX, (int) startY, width, height);
+
+        this.setImageBitmap(resizedBitmap);
+    }
+
+    @Override
+    public void sketch(int type, int threshold) {
+        this.setImageBitmap(Sketch.changeToSketch(definedBitmap, type, threshold));
     }
 }

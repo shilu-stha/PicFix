@@ -6,7 +6,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Class to set watermark to the bitmap
  */
 public class WaterMark {
 

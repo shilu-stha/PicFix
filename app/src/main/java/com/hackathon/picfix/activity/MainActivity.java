@@ -1,32 +1,28 @@
 package com.hackathon.picfix.activity;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.hackathon.picfix.PicFixImageView;
 import com.hackathon.picfix.R;
-import com.hackathon.picfix.utils.Constants;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
-    PicFixImageView asd;
-    Point location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        location = new Point();
+        Point location=new Point();
         location.set(2000, 2000);
 
-        asd = (PicFixImageView) findViewById(R.id.ivTest);
+        PicFixImageView asd = (PicFixImageView) findViewById(R.id.ivTest);
 
         Button btn = (Button) findViewById(R.id.btnFrames);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
 //        asd.applyFleaEffect();
 //        asd.setTintImage(20);
 //        asd.flipImage(Constants.FLIP_VERTICAL);
+//        asd.sketch();
 //        asd.setWaterMark("Hackathon", location, Color.BLACK, 10, 30, false);
     }
 }

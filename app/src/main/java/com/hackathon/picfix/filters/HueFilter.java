@@ -7,7 +7,7 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Provides Hue Filter effect to the bitmap created
  */
 public class HueFilter {
 
