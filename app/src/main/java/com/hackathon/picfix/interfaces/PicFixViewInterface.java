@@ -71,13 +71,6 @@ public interface PicFixViewInterface {
 
     void setTintImage(int tintDegree);
 
-//    /**
-//     * replace the color of image
-//     * @param fromColor - value color from which replace starts
-//     *  @param targetColor - color value to which color needs to be replaced
-//     * */
-//    void replaceColor(int fromColor, int targetColor);
-
     /**
      * flip the image
      *
