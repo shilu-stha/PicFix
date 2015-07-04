@@ -10,6 +10,17 @@ import android.graphics.Point;
  */
 public class WaterMark {
 
+    /**
+     *
+     * @param definedBitmap supplied bitmap
+     * @param watermark string to applied as watermark
+     * @param location location where watermark is to be set
+     * @param color color of the string to be set as watermark
+     * @param alpha alpha of the color to be applied
+     * @param size size of the string
+     * @param underline true if underline needed else false
+     * @return watermarked bitmap
+     */
     public static Bitmap getWaterMarked(Bitmap definedBitmap,String watermark, Point location, int color, int alpha, int size, boolean underline){
 
         int w = definedBitmap.getWidth();

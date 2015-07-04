@@ -13,7 +13,7 @@ import com.hackathon.picfix.utils.Constants;
 public class FlipImage {
 
     /**
-     * This method flips the supplied bitmap according to the fliptype supplied changing the {@link Matrix} of the image
+     * This method flips the supplied bitmap according to the flip type supplied changing the {@link Matrix} of the image
      *
      * @param definedBitmap supplied bitmap to be change
      * @param flipType      constant to rotate the image with. It could be <i>Constants.FLIP_VERTICAL</i> and <i>Constants.FLIP_HORIZONTAL</i>

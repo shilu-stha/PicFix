@@ -14,6 +14,14 @@ import java.util.Random;
  */
 public class FleaEffect {
 
+    /**
+     * This method takes each pixel in the bitmap and
+     * then change them according to the random value generated from
+     *COLOR_MAX and COLOR_MIN from {@link Constants}
+     * @param definedBitmap supplied bitmap
+     * @return flea effect added bitmap
+     */
+
      public static Bitmap getFleaEffectBitmap(Bitmap definedBitmap){
         // get image size
         int width = definedBitmap.getWidth();

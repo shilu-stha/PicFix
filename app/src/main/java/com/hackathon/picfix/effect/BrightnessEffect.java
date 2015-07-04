@@ -14,8 +14,8 @@ public class BrightnessEffect {
      * This method takes the RGB value of each pixel in the bitmap and then change them according to the brightness value supplied.
      *
      * @param definedBitmap supplied bitmap
-     * @param brightnessValue
-     * @return
+     * @param brightnessValue brightness value to be set
+     * @return brightness added bitmap
      */
     public static Bitmap getBrightnessEffect(Bitmap definedBitmap, int brightnessValue) {
 

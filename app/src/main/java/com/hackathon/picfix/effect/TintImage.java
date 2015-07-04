@@ -9,6 +9,14 @@ import com.hackathon.picfix.utils.Constants;
  */
 public class TintImage {
 
+    /**
+     * This method takes the RGB value of each pixel in the bitmap and then change them according to the tint degree supplied.
+     *
+     * @param definedBitmap supplied bitmap
+     * @param tintDegree degree of tint value to be set
+     * @return tint added bitmap
+     */
+
     public static Bitmap getTintImage(Bitmap definedBitmap, int tintDegree){
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();
