@@ -2,15 +2,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.hackathon.picfix.activity.DetailActivity">
 
-    <ImageButton
+    <com.hackathon.picfix.PicFixImageView
         android:id="@+id/img_candidate"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:src="@drawable/person" />
+
+    <View
+        android:id="@+id/view_overlay"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:background="#20000000" />
+
+    <com.rey.material.widget.ProgressView
+        app:pv_autostart="true"
+        app:pv_circular="true"
+        app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
+
 </RelativeLayout>

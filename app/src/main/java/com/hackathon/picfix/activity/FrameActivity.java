@@ -1,13 +1,8 @@
 package com.hackathon.picfix.activity;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -26,7 +21,7 @@ import java.io.IOException;
 
 public class FrameActivity extends BaseActivity {
 
-    private Integer[] mImageIds = {R.drawable.image1, R.drawable.image3};
+    private Integer[] mImageIds = {R.drawable.frame1, R.drawable.frame2, R.drawable.frame3};
     private int mPosition;
 
     @Override

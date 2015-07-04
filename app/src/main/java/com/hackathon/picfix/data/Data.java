@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Data {
     private String[] data = {"Rotate", "Blur", "Brightness", "Shading", "Black Filter",
             "Saturation Filter", "Snow Effect", "Flea Effect", "Tint",
-            "flip", "WaterMark", "Resize", "Crop", "sketch", "Hue"};
+            "flip", "WaterMark", "Resize", "Crop", "sketch", "Hue", "Frames"};
 
     public String[] getData() {
         return data;

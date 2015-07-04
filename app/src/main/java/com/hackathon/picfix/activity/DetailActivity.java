@@ -1,14 +1,19 @@
 package com.hackathon.picfix.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
+import com.hackathon.picfix.PicFixImageView;
 import com.hackathon.picfix.R;
 import com.hackathon.picfix.effect.BlurBuilder;
 import com.hackathon.picfix.effect.BrightnessEffect;
@@ -27,10 +32,15 @@ import butterknife.InjectView;
 public class DetailActivity extends BaseActivity {
 
     @InjectView(R.id.img_candidate)
-    ImageView imgCandidate;
+    PicFixImageView imgCandidate;
+
+    @InjectView(R.id.view_overlay)
+    View view;
+
     String feature;
     Bitmap bitmap;
 
+    private final Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +49,15 @@ public class DetailActivity extends BaseActivity {
         feature = getIntent().getExtras().getString(com.hackathon.picfix.utils.Constants.FEATURE);
         bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.person);
-        setImageFeature();
+
+        final Runnable r = new Runnable() {
+            public void run() {
+                setImageFeature();
+                view.setVisibility(View.GONE);
+            }
+        };
+        handler.postDelayed(r, 1000);
+
     }
 
     @Override
@@ -72,49 +90,54 @@ public class DetailActivity extends BaseActivity {
     private void setImageFeature() {
         switch (feature) {
             case "Rotate":
-                imgCandidate.setImageBitmap(RotationEffect.getRotatedBitmap(this, bitmap, 90));
+                imgCandidate.setRotationTo(70);
                 break;
             case "Blur":
-                imgCandidate.setImageBitmap(BlurBuilder.blur(this, bitmap, 20));
+                imgCandidate.setBlur(20);
                 break;
             case "Brightness":
-                imgCandidate.setImageBitmap(BrightnessEffect.getBrightnessEffect(bitmap, 20));
+                imgCandidate.setBrightness(20);
                 break;
             case "Shading":
-                imgCandidate.setImageBitmap(ShadingEffect.getShadingEffect(bitmap, Color.BLUE));
+                imgCandidate.setShading(Color.BLUE);
                 break;
             case "Black Filter":
-                imgCandidate.setImageBitmap(BlackFilter.getBlackFilteredImage(bitmap));
+                imgCandidate.applyBlackFilter();
                 break;
             case "Saturation Filter":
-                imgCandidate.setImageBitmap(SaturationFilter.getSaturatedFilter(bitmap, 9));
+                imgCandidate.applySaturationFilter(9);
                 break;
             case "Snow Effect":
-                imgCandidate.setImageBitmap(SnowEffect.getSnowEffectBitmap(bitmap));
+                imgCandidate.applySnowEffect();
                 break;
             case "Flea Effect":
-                imgCandidate.setImageBitmap(FleaEffect.getFleaEffectBitmap(bitmap));
+                imgCandidate.applyFleaEffect();
                 break;
             case "Tint":
-                imgCandidate.setImageBitmap(TintImage.getTintImage(bitmap, 45));
+                imgCandidate.setTintImage(45);
                 break;
             case "flip":
-                imgCandidate.setImageBitmap(FlipImage.getFlippedImage(bitmap, com.hackathon.picfix.utils.Constants.FLIP_HORIZONTAL));
+                imgCandidate.flipImage(com.hackathon.picfix.utils.Constants.FLIP_HORIZONTAL);
                 break;
             case "WaterMark":
                 //imgCandidate.setImageBitmap(WaterMark.getWaterMarked());
                 break;
             case "Resize":
-                startActivity(new Intent(DetailActivity.this, FrameActivity.class));
+                startActivity(new Intent(DetailActivity.this, ResizeActivity.class));
                 break;
             case "Crop":
                 break;
             case "sketch":
-                imgCandidate.setImageBitmap(Sketch.changeToSketch(bitmap));
+                imgCandidate.sketch(4, 250);
                 break;
             case "Hue":
-                imgCandidate.setImageBitmap(bitmap);
+                imgCandidate.applyHue(20);
+                break;
+            case "Frames":
+                startActivity(new Intent(this, FrameActivity.class));
                 break;
         }
     }
+
+
 }

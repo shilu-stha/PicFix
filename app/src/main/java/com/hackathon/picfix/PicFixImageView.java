@@ -7,6 +7,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -43,6 +44,7 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     private final Drawable drawable;
     private final Context context;
     private final Bitmap definedBitmap;
+    private final Handler handler = new Handler();
 
     public PicFixImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -213,8 +215,9 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     }
 
     @Override
-    public void sketch(int type, int threshold) {
-        this.setImageBitmap(Sketch.changeToSketch(definedBitmap, type, threshold));
+    public void sketch(final int type, final int threshold) {
+                this.setImageBitmap(Sketch.changeToSketch(definedBitmap, type, threshold));
+
     }
 
     @Override

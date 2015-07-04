@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="picfix_semi_transparent_overlay">#80000000</color>
+    <color name="picfix_semi_transparent_overlay">#20000000</color>
     <color name="picfix_transparent_overlay">#FF000000</color>
 
     <color name="primary">#F44336</color>

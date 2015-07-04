@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.hackathon.picfix.PicFixImageView
+            android:id="@+id/iv_sample_image_resize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/person"
+            />
+
+        <ImageView
+            android:id="@+id/iv_scale_arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_sample_image_resize"
+            android:src="@drawable/img_scale_arrow_right"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_scale_arrow_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_sample_image_resize"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/img_scale_arrow_bottom"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_scale_arrow_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/iv_scale_arrow_bottom"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/img_scale_arrow_top"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_scale_arrow_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_scale_arrow_right"
+            android:src="@drawable/img_scale_arrow_left"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

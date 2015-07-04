@@ -38,7 +38,7 @@
             android:layout_centerVertical="true"
             android:layout_margin="20dp"
             android:scaleType="fitXY"
-            android:src="@drawable/image1" />
+            android:src="@drawable/frame1" />
 
     </RelativeLayout>
 
