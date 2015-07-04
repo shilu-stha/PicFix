@@ -4,17 +4,28 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 
 /**
- *set Brightness effect to the image view
+ * Set Brightness to the given bitmap with supplied amount of brightness
+ *
+ * @date 7/3/15
  */
 public class BrightnessEffect {
 
-    public static Bitmap getBrightnessEffect(Bitmap definedBitmap, int brightnessValue){
+    /**
+     * This method takes the RGB value of each pixel in the bitmap and then change them according to the brightness value supplied.
+     *
+     * @param definedBitmap supplied bitmap
+     * @param brightnessValue
+     * @return
+     */
+    public static Bitmap getBrightnessEffect(Bitmap definedBitmap, int brightnessValue) {
 
         // image size
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();
+
         // create output bitmap
         Bitmap brightnessAddedBitmap = Bitmap.createBitmap(width, height, definedBitmap.getConfig());
+
         // color information
         int A, R, G, B;
         int pixel;
@@ -22,6 +33,7 @@ public class BrightnessEffect {
         // scan through all pixels
         for (int x = 0; x < width; ++x) {
             for (int y = 0; y < height; ++y) {
+
                 // get pixel color
                 pixel = definedBitmap.getPixel(x, y);
                 A = Color.alpha(pixel);
@@ -55,6 +67,6 @@ public class BrightnessEffect {
                 brightnessAddedBitmap.setPixel(x, y, Color.argb(A, R, G, B));
             }
         }
-        return  brightnessAddedBitmap;
+        return brightnessAddedBitmap;
     }
 }

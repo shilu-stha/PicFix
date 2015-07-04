@@ -1,6 +1,5 @@
 package com.hackathon.picfix.effect;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
@@ -9,7 +8,15 @@ import android.graphics.Matrix;
  */
 public class RotationEffect {
 
-    public static Bitmap getRotatedBitmap(Context context, Bitmap image, float rotationDegree){
+    /**
+     * Rotates the given bitmap image with the rotation degree supplied.
+     * Changes the matrix of the bitmap for rotation.
+     *
+     * @param image          supplied bitmap
+     * @param rotationDegree rotation degree can be <b>0-360</b>
+     * @return
+     */
+    public static Bitmap getRotatedBitmap(Bitmap image, float rotationDegree) {
 
         // create new matrix
         Matrix matrix = new Matrix();

@@ -30,7 +30,6 @@ import com.hackathon.picfix.utils.BitmapManipulation;
 import java.io.ByteArrayOutputStream;
 
 /**
- *
  * extends {@link ImageView} class to apply all the image editor function
  * {@link PicFixViewInterface} is implemented to pass all the editor function
  */
@@ -55,7 +54,7 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
     @Override
     public void setRotationTo(float rotationDegree) {
-        Bitmap rotatedBitmap = RotationEffect.getRotatedBitmap(context, definedBitmap, rotationDegree);
+        Bitmap rotatedBitmap = RotationEffect.getRotatedBitmap(definedBitmap, rotationDegree);
         this.setImageBitmap(rotatedBitmap);
     }
 
@@ -175,25 +174,25 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
     @Override
     public Bitmap getFramedBitmap(PicFixImageView selectedImageView, int position) {
-            ByteArrayOutputStream bytesOfImage = new ByteArrayOutputStream();
-            // compressing to 10 percent
+        ByteArrayOutputStream bytesOfImage = new ByteArrayOutputStream();
+        // compressing to 10 percent
 
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inJustDecodeBounds = true;
-            options.inSampleSize = 2;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        options.inSampleSize = 2;
 
-            // Decode bitmap with inSampleSize set
-            options.inJustDecodeBounds = false;
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
 
-            Bitmap bitmapOverlayPicture = BitmapFactory.decodeResource(
-                    getResources(), mFrames[position], options);
+        Bitmap bitmapOverlayPicture = BitmapFactory.decodeResource(
+                getResources(), mFrames[position], options);
 
-            Bitmap bitmapSelectedPicture = ((BitmapDrawable)selectedImageView.getDrawable()).getBitmap();
+        Bitmap bitmapSelectedPicture = ((BitmapDrawable) selectedImageView.getDrawable()).getBitmap();
 
-            bitmapOverlayPicture = bitmapOverlayPicture.createScaledBitmap(bitmapOverlayPicture, bitmapSelectedPicture.getWidth(), bitmapSelectedPicture.getHeight(), true);
+        bitmapOverlayPicture = bitmapOverlayPicture.createScaledBitmap(bitmapOverlayPicture, bitmapSelectedPicture.getWidth(), bitmapSelectedPicture.getHeight(), true);
 
-            Bitmap bitmap = BitmapManipulation.overlapBitmaps(bitmapSelectedPicture, bitmapOverlayPicture);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytesOfImage);
+        Bitmap bitmap = BitmapManipulation.overlapBitmaps(bitmapSelectedPicture, bitmapOverlayPicture);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytesOfImage);
 
         return bitmap;
     }
@@ -219,6 +218,6 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
     @Override
     public ColorFilter applyHue(int huelevel) {
-            return HueFilter.adjustHue(huelevel);
+        return HueFilter.adjustHue(huelevel);
     }
 }

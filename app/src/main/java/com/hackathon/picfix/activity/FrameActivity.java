@@ -1,9 +1,9 @@
 package com.hackathon.picfix.activity;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -20,7 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class FrameActivity extends ActionBarActivity {
+public class FrameActivity extends Activity {
 
     private final Integer[] mImageIds = {R.drawable.image1, R.drawable.image3};
     private int mPosition;
@@ -57,26 +57,27 @@ public class FrameActivity extends ActionBarActivity {
 
                 Bitmap bitmap = imageView.getFramedBitmap(imageView, mPosition);
 
-                setFrameSave("sample", "framed", bitmap);
+                //todo used newly created image path to show it later.
+                String path = setFrameSave ("sample", "framed", bitmap);
             }
         });
     }
 
     /**
+     * Save the bitmap to required location with supplied filename.
      *
-     * @param fileName - name of the file
+     * @param fileName     - name of the file
      * @param fileLocation -  file location
-     * @param bitmap - bitmap to store
+     * @param bitmap       - bitmap to store
      * @return - file path
      */
     private String setFrameSave(String fileName, String fileLocation, Bitmap bitmap) {
         File file = new File(Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), fileLocation);
-        if(!file.exists()) {
-            file.mkdirs();
+        if (!file.exists()) {
+            file.mkdir();
         }
-        File bitmapFile = new File(file, fileName
-                + System.currentTimeMillis() + ".jpeg");
+        File bitmapFile = new File(file, fileName + System.currentTimeMillis() + ".jpeg");
         FileOutputStream out;
         try {
             ByteArrayOutputStream bytesOfImage = new ByteArrayOutputStream();

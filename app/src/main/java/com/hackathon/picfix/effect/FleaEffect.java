@@ -8,21 +8,26 @@ import com.hackathon.picfix.utils.Constants;
 import java.util.Random;
 
 /**
- * set Flea Effect in the bitmap
+ * Set Flea Effect in the given bitmap
+ *
+ * @date 7/3/15
  */
 public class FleaEffect {
 
-    public static Bitmap getFleaEffectBitmap(Bitmap definedBitmap){
+     public static Bitmap getFleaEffectBitmap(Bitmap definedBitmap){
         // get image size
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();
         int[] pixels = new int[width * height];
+
         // get pixel array from source
         definedBitmap.getPixels(pixels, 0, width, 0, 0, width, height);
+
         // a random object
         Random random = new Random();
 
         int index = 0;
+
         // iteration through pixels
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
@@ -35,6 +40,7 @@ public class FleaEffect {
                 pixels[index] |= randColor;
             }
         }
+
         // output bitmap
         Bitmap fleaEffectBitmap = Bitmap.createBitmap(width, height, definedBitmap.getConfig());
         fleaEffectBitmap.setPixels(pixels, 0, width, 0, 0, width, height);

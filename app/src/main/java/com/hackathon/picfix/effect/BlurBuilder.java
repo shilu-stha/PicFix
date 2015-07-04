@@ -8,8 +8,10 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 
 /**
- * Created by Manas on 6/22/2015.
- * set the Blur effect
+ * Set Blur effect
+ *
+ * @author Manas
+ * @date 7/3/15
  */
 public class BlurBuilder {
     private static final float BITMAP_SCALE = 0.6f;
