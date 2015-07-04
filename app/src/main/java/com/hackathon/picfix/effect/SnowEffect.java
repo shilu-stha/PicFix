@@ -8,7 +8,7 @@ import com.hackathon.picfix.utils.Constants;
 import java.util.Random;
 
 /**
- * Class to set Snow Effect in Image view
+ * set Snow Effect in Image view
  */
 public class SnowEffect {
 

@@ -8,6 +8,7 @@ import android.graphics.Matrix;
 
 /**
  * Created by shilushrestha on 7/3/15.
+ * manipulate bitmap to calculate sample size, decode bitmaps
  */
 public class BitmapManipulation {
     public static Bitmap decodeSampledBitmapFromResourcePreview(Resources resources, Integer mFrame) {

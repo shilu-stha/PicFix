@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import com.hackathon.picfix.utils.Constants;
 
 /**
- * Class to provide tint effect to bitmap
+ *Provide tint effect to bitmap
  */
 public class TintImage {
 

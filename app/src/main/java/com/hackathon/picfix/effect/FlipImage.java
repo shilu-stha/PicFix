@@ -6,7 +6,7 @@ import android.graphics.Matrix;
 import com.hackathon.picfix.utils.Constants;
 
 /**
- * Class ti flip the bitmap
+ *  flip the bitmap
  */
 public class FlipImage {
 

@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 /**
  * Created by Manas on 7/4/2015.
+ * set sketch to bitmap
  */
 public class Sketch {
     //  type = 3(Negative), 4(Pencil Sketch), 5(Color Pencil Sketch)

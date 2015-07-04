@@ -8,7 +8,7 @@ import com.hackathon.picfix.utils.Constants;
 import java.util.Random;
 
 /**
- * Class to apply black filter to provided bitmap
+ * Apply black filter to provided bitmap
  */
 public class BlackFilter {
 

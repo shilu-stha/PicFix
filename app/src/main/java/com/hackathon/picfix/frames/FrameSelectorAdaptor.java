@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 /**
  * Created by shilushrestha on 7/3/15.
+ * adapter to set frames
  */
 public class FrameSelectorAdaptor extends BaseAdapter {
     private Context mContext;

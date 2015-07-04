@@ -3,7 +3,7 @@ package com.hackathon.picfix.effect;
 import android.graphics.Bitmap;
 
 /**
- * Class providing shading effect of an color over bitmap
+ * providing shading effect of an color over bitmap
  */
 public class ShadingEffect {
 

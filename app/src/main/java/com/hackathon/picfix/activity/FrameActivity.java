@@ -1,13 +1,9 @@
 package com.hackathon.picfix.activity;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -26,7 +22,7 @@ import java.io.IOException;
 
 public class FrameActivity extends ActionBarActivity {
 
-    private Integer[] mImageIds = {R.drawable.image1, R.drawable.image3};
+    private final Integer[] mImageIds = {R.drawable.image1, R.drawable.image3};
     private int mPosition;
 
     @Override
@@ -60,23 +56,34 @@ public class FrameActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 Bitmap bitmap = imageView.getFramedBitmap(imageView, mPosition);
+
                 setFrameSave("sample", "framed", bitmap);
             }
         });
     }
 
+    /**
+     *
+     * @param fileName - name of the file
+     * @param fileLocation -  file location
+     * @param bitmap - bitmap to store
+     * @return - file path
+     */
     private String setFrameSave(String fileName, String fileLocation, Bitmap bitmap) {
         File file = new File(Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), fileLocation);
-        file.mkdirs();
-        File bitmapfile = new File(file,fileName
+        if(!file.exists()) {
+            file.mkdirs();
+        }
+        File bitmapFile = new File(file, fileName
                 + System.currentTimeMillis() + ".jpeg");
         FileOutputStream out;
         try {
             ByteArrayOutputStream bytesOfImage = new ByteArrayOutputStream();
 
-            out = new FileOutputStream(bitmapfile);
+            out = new FileOutputStream(bitmapFile);
             out.write(bytesOfImage.toByteArray());
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytesOfImage);
             // out.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -84,8 +91,7 @@ public class FrameActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
-        String path = bitmapfile.getAbsolutePath();
-        return path;
+        return bitmapFile.getAbsolutePath();
     }
 
 }

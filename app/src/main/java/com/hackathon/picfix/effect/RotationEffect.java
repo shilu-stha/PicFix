@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
 /**
- * Class to provide rotated effect to the bitmap
+ * provide rotated effect to the bitmap
  */
 public class RotationEffect {
 
