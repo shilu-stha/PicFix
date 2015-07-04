@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Point location=new Point();
+        Point location = new Point();
         location.set(2000, 2000);
 
         PicFixImageView asd = (PicFixImageView) findViewById(R.id.ivTest);
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 //        asd.setShading(Color.parseColor("#00aa32"));
 //        asd.applyBlackFilter();/
 //        asd.applyHueFilter(50);
-        asd.setColorFilter(asd.applyHue(50));
+//        asd.setColorFilter(asd.applyHue(50));
 //        asd.adjustHue(50);
 //        asd.applySaturationFilter(80);
 //        asd.applySnowEffect();
@@ -49,5 +49,6 @@ public class MainActivity extends Activity {
 //        asd.flipImage(Constants.FLIP_VERTICAL);
 //        asd.sketch();
 //        asd.setWaterMark("Hackathon", location, Color.BLACK, 10, 30, false);
+//        asd.setGreyScale();
     }
 }

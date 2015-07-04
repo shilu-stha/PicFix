@@ -5,7 +5,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Point;
 
 /**
- *Interface to handle all the image editor function
+ * Interface to handle all the image editor function
  */
 public interface PicFixViewInterface {
 
@@ -126,9 +126,12 @@ public interface PicFixViewInterface {
 
     /**
      * set hue filter
+     *
      * @param huelevel
      * @return
      */
     ColorFilter applyHue(int huelevel);
+
+    void setGreyScale();
 
 }

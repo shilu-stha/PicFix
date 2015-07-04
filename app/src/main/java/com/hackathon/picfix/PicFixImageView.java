@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ColorFilter;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -220,5 +222,14 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     @Override
     public ColorFilter applyHue(int huelevel) {
             return HueFilter.adjustHue(huelevel);
+    }
+
+    @Override
+    public void setGreyScale() {
+        ColorMatrix matrix = new ColorMatrix();
+        matrix.setSaturation(0);
+
+        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
+        this.setColorFilter(filter);
     }
 }
