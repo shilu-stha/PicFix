@@ -1,34 +1,22 @@
 package com.hackathon.picfix.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.hackathon.picfix.PicFixImageView;
 import com.hackathon.picfix.R;
-import com.hackathon.picfix.effect.BlurBuilder;
-import com.hackathon.picfix.effect.BrightnessEffect;
-import com.hackathon.picfix.effect.FleaEffect;
-import com.hackathon.picfix.effect.FlipImage;
-import com.hackathon.picfix.effect.RotationEffect;
-import com.hackathon.picfix.effect.ShadingEffect;
-import com.hackathon.picfix.effect.Sketch;
-import com.hackathon.picfix.effect.SnowEffect;
-import com.hackathon.picfix.effect.TintImage;
-import com.hackathon.picfix.filters.BlackFilter;
-import com.hackathon.picfix.filters.SaturationFilter;
-
 import butterknife.InjectView;
 
+/**
+ * handle all the effect applied to the image view and pass it to respective method to process it.
+ * */
 public class DetailActivity extends BaseActivity {
 
     @InjectView(R.id.img_candidate)
@@ -37,8 +25,8 @@ public class DetailActivity extends BaseActivity {
     @InjectView(R.id.view_overlay)
     View view;
 
-    String feature;
-    Bitmap bitmap;
+    private String feature;
+    private Bitmap bitmap;
 
     private final Handler handler = new Handler();
 
@@ -86,7 +74,7 @@ public class DetailActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+//switch to the required method
     private void setImageFeature() {
         switch (feature) {
             case "Rotate":

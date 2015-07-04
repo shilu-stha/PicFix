@@ -28,10 +28,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setSupport Action bar
         setSupportActionBar(toolbar);
+        //set recyclerview
         setRecyclerView();
     }
 
+    /**
+     * set {@link RecyclerView} layout manager, adapter.
+     * */
     private void setRecyclerView() {
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
