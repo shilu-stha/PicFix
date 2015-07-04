@@ -19,4 +19,6 @@ public class Constants {
     // image flip type definition
     public static final int FLIP_VERTICAL = 1;
     public static final int FLIP_HORIZONTAL = 2;
+
+    public static String FEATURE="feature";
 }

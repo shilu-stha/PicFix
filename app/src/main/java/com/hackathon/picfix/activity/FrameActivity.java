@@ -24,7 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class FrameActivity extends ActionBarActivity {
+public class FrameActivity extends BaseActivity {
 
     private Integer[] mImageIds = {R.drawable.image1, R.drawable.image3};
     private int mPosition;
@@ -32,7 +32,6 @@ public class FrameActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_frame);
 
         final PicFixImageView imageView = (PicFixImageView) findViewById(R.id.overlayselected);
         final PicFixImageView imageViewFrame = (PicFixImageView) findViewById(R.id.overlayFrame);
@@ -65,11 +64,16 @@ public class FrameActivity extends ActionBarActivity {
         });
     }
 
+    @Override
+    public int getLayout() {
+        return R.layout.activity_frame;
+    }
+
     private String setFrameSave(String fileName, String fileLocation, Bitmap bitmap) {
         File file = new File(Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), fileLocation);
         file.mkdirs();
-        File bitmapfile = new File(file,fileName
+        File bitmapfile = new File(file, fileName
                 + System.currentTimeMillis() + ".jpeg");
         FileOutputStream out;
         try {

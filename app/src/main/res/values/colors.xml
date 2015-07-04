@@ -2,4 +2,13 @@
 <resources>
     <color name="picfix_semi_transparent_overlay">#80000000</color>
     <color name="picfix_transparent_overlay">#FF000000</color>
+
+    <color name="primary">#F44336</color>
+    <color name="primary_dark">#D32F2F</color>
+    <color name="primary_light">#FFCDD2</color>
+    <color name="accent">#8BC34A</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
 </resources>
