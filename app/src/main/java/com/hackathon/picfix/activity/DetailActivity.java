@@ -1,35 +1,22 @@
 package com.hackathon.picfix.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import com.hackathon.picfix.PicFixImageView;
 import com.hackathon.picfix.R;
-import com.hackathon.picfix.effect.BlurBuilder;
-import com.hackathon.picfix.effect.BrightnessEffect;
-import com.hackathon.picfix.effect.FleaEffect;
-import com.hackathon.picfix.effect.FlipImage;
-import com.hackathon.picfix.effect.RotationEffect;
-import com.hackathon.picfix.effect.ShadingEffect;
-import com.hackathon.picfix.effect.Sketch;
-import com.hackathon.picfix.effect.SnowEffect;
-import com.hackathon.picfix.effect.TintImage;
-import com.hackathon.picfix.filters.BlackFilter;
-import com.hackathon.picfix.filters.SaturationFilter;
-
 import butterknife.InjectView;
 
+/**
+ * handle all the effect applied to the image view and pass it to respective method to process it.
+ * */
 public class DetailActivity extends BaseActivity {
 
     @InjectView(R.id.seek_bar)
@@ -41,8 +28,8 @@ public class DetailActivity extends BaseActivity {
     @InjectView(R.id.view_overlay)
     View view;
 
-    String feature;
-    Bitmap bitmap;
+    private String feature;
+    private Bitmap bitmap;
 
     int value = 0;
 
@@ -54,6 +41,7 @@ public class DetailActivity extends BaseActivity {
         bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.person);
 
+        seekBar.setVisibility(View.INVISIBLE);
         setImageFeature();
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -102,18 +90,21 @@ public class DetailActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+//switch to the required method
     private void setImageFeature() {
         switch (feature) {
             case "Rotate":
+                seekBar.setVisibility(View.VISIBLE);
                 imgCandidate.setRotationTo(value);
                 break;
             case "Blur":
+                seekBar.setVisibility(View.VISIBLE);
                 if(value>0 && value<25) {
                     imgCandidate.setBlur(value);
                 }
                 break;
             case "Brightness":
+                seekBar.setVisibility(View.VISIBLE);
                 imgCandidate.setBrightness(value);
                 break;
             case "Shading":
@@ -123,6 +114,7 @@ public class DetailActivity extends BaseActivity {
                 imgCandidate.applyBlackFilter();
                 break;
             case "Saturation Filter":
+                seekBar.setVisibility(View.VISIBLE);
                 imgCandidate.applySaturationFilter(value);
                 break;
             case "Snow Effect":
@@ -132,6 +124,7 @@ public class DetailActivity extends BaseActivity {
                 imgCandidate.applyFleaEffect();
                 break;
             case "Tint":
+                seekBar.setVisibility(View.VISIBLE);
                 imgCandidate.setTintImage(value);
                 break;
             case "flip":
@@ -149,6 +142,7 @@ public class DetailActivity extends BaseActivity {
                 imgCandidate.sketch(4, 250);
                 break;
             case "Hue":
+                seekBar.setVisibility(View.VISIBLE);
                 imgCandidate.applyHue(value);
                 break;
             case "Frames":
