@@ -16,12 +16,21 @@
         android:layout_centerInParent="true"
         android:src="@drawable/person" />
 
+
     <View
         android:id="@+id/view_overlay"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:background="#20000000" />
+
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_below="@+id/view_overlay"
+        android:max="100" />
 
     <com.rey.material.widget.ProgressView
         app:pv_autostart="true"

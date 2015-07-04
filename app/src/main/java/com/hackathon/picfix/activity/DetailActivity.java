@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 
 import com.hackathon.picfix.PicFixImageView;
 import com.hackathon.picfix.R;
@@ -31,6 +32,9 @@ import butterknife.InjectView;
 
 public class DetailActivity extends BaseActivity {
 
+    @InjectView(R.id.seek_bar)
+    SeekBar seekBar;
+
     @InjectView(R.id.img_candidate)
     PicFixImageView imgCandidate;
 
@@ -40,7 +44,7 @@ public class DetailActivity extends BaseActivity {
     String feature;
     Bitmap bitmap;
 
-    private final Handler handler = new Handler();
+    int value = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +54,25 @@ public class DetailActivity extends BaseActivity {
         bitmap = BitmapFactory.decodeResource(getResources(),
                 R.drawable.person);
 
-        final Runnable r = new Runnable() {
-            public void run() {
+        setImageFeature();
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                value = i;
                 setImageFeature();
-                view.setVisibility(View.GONE);
             }
-        };
-        handler.postDelayed(r, 1000);
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
     }
 
@@ -90,13 +106,15 @@ public class DetailActivity extends BaseActivity {
     private void setImageFeature() {
         switch (feature) {
             case "Rotate":
-                imgCandidate.setRotationTo(70);
+                imgCandidate.setRotationTo(value);
                 break;
             case "Blur":
-                imgCandidate.setBlur(20);
+                if(value>0 && value<25) {
+                    imgCandidate.setBlur(value);
+                }
                 break;
             case "Brightness":
-                imgCandidate.setBrightness(20);
+                imgCandidate.setBrightness(value);
                 break;
             case "Shading":
                 imgCandidate.setShading(Color.BLUE);
@@ -105,7 +123,7 @@ public class DetailActivity extends BaseActivity {
                 imgCandidate.applyBlackFilter();
                 break;
             case "Saturation Filter":
-                imgCandidate.applySaturationFilter(9);
+                imgCandidate.applySaturationFilter(value);
                 break;
             case "Snow Effect":
                 imgCandidate.applySnowEffect();
@@ -114,7 +132,7 @@ public class DetailActivity extends BaseActivity {
                 imgCandidate.applyFleaEffect();
                 break;
             case "Tint":
-                imgCandidate.setTintImage(45);
+                imgCandidate.setTintImage(value);
                 break;
             case "flip":
                 imgCandidate.flipImage(com.hackathon.picfix.utils.Constants.FLIP_HORIZONTAL);
@@ -131,7 +149,7 @@ public class DetailActivity extends BaseActivity {
                 imgCandidate.sketch(4, 250);
                 break;
             case "Hue":
-                imgCandidate.applyHue(20);
+                imgCandidate.applyHue(value);
                 break;
             case "Frames":
                 startActivity(new Intent(this, FrameActivity.class));
