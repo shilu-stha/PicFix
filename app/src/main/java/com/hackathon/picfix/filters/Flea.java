@@ -1,9 +1,9 @@
-package com.hackathon.picfix.effect;
+package com.hackathon.picfix.filters;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
-import com.hackathon.picfix.utils.Constants;
+import com.hackathon.picfix.data.Constants;
 
 import java.util.Random;
 
@@ -12,17 +12,17 @@ import java.util.Random;
  *
  * @date 7/3/15
  */
-public class FleaEffect {
+public class Flea {
 
     /**
      * This method takes each pixel in the bitmap and
-     * then change them according to the random value generated from
-     *COLOR_MAX and COLOR_MIN from {@link Constants}
+     * then change them according to the random value generated from COLOR_MAX and COLOR_MIN from {@link Constants}
+     *
      * @param definedBitmap supplied bitmap
      * @return flea effect added bitmap
      */
 
-     public static Bitmap getFleaEffectBitmap(Bitmap definedBitmap){
+    public static Bitmap getFleaEffectBitmap(Bitmap definedBitmap) {
         // get image size
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();

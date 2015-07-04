@@ -5,10 +5,19 @@ import android.graphics.Color;
 
 /**
  * Provide saturation effect to the bitmap
+ *
+ * @date 7/3/15
  */
-public class SaturationFilter {
+public class Saturation {
 
-    public static Bitmap getSaturatedFilter(Bitmap definedBitmap, int saturationLevel){
+    /**
+     * Change HSV(Hue-Saturation Value) of the bitmap by the saturation level.
+     *
+     * @param definedBitmap   supplied bitmap
+     * @param saturationLevel integer level
+     * @return filtered bitmap
+     */
+    public static Bitmap getSaturatedFilter(Bitmap definedBitmap, int saturationLevel) {
         // get image size
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();
@@ -17,7 +26,7 @@ public class SaturationFilter {
         // get pixel array from source
         definedBitmap.getPixels(pixels, 0, width, 0, 0, width, height);
 
-        int index = 0;
+        int index;
         // iteration through pixels
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {

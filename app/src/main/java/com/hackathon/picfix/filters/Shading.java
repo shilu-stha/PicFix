@@ -1,13 +1,22 @@
-package com.hackathon.picfix.effect;
+package com.hackathon.picfix.filters;
 
 import android.graphics.Bitmap;
 
 /**
- * providing shading effect of an color over bitmap
+ * Provides shading effect of supplied color over bitmap
+ *
+ * @date 7/3/15
  */
-public class ShadingEffect {
+public class Shading {
 
-    public static Bitmap getShadingEffect(Bitmap definedBitmap, int shadingColor){
+    /**
+     * Updates each pixel of the bitmap with the supplied shading color.
+     *
+     * @param definedBitmap supplied bitmap
+     * @param shadingColor  hex code of shading color
+     * @return shaded bitmap
+     */
+    public static Bitmap getShadingEffect(Bitmap definedBitmap, int shadingColor) {
         // get image size
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();

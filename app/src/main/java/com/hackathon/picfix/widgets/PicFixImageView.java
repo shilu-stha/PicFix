@@ -1,4 +1,4 @@
-package com.hackathon.picfix;
+package com.hackathon.picfix.widgets;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,21 +11,22 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.hackathon.picfix.effect.BlurBuilder;
-import com.hackathon.picfix.effect.BrightnessEffect;
-import com.hackathon.picfix.effect.FleaEffect;
-import com.hackathon.picfix.effect.FlipImage;
-import com.hackathon.picfix.effect.RotationEffect;
-import com.hackathon.picfix.effect.ShadingEffect;
-import com.hackathon.picfix.effect.Sketch;
-import com.hackathon.picfix.effect.SnowEffect;
-import com.hackathon.picfix.effect.TintImage;
-import com.hackathon.picfix.effect.WaterMark;
+import com.hackathon.picfix.filters.Blur;
+import com.hackathon.picfix.filters.Brightness;
+import com.hackathon.picfix.filters.Flea;
+import com.hackathon.picfix.transform.FlipImage;
+import com.hackathon.picfix.transform.RotationEffect;
+import com.hackathon.picfix.filters.Shading;
+import com.hackathon.picfix.filters.Sketch;
+import com.hackathon.picfix.filters.Snow;
+import com.hackathon.picfix.filters.TintImage;
+import com.hackathon.picfix.filters.WaterMark;
 import com.hackathon.picfix.filters.BlackFilter;
-import com.hackathon.picfix.filters.HueFilter;
-import com.hackathon.picfix.filters.SaturationFilter;
-import com.hackathon.picfix.frames.CustomFrameInterface;
-import com.hackathon.picfix.utils.BitmapManipulation;
+import com.hackathon.picfix.filters.Hue;
+import com.hackathon.picfix.filters.Saturation;
+import com.hackathon.picfix.interfaces.CustomFrameInterface;
+import com.hackathon.picfix.interfaces.PicFixViewInterface;
+import com.hackathon.picfix.utils.BitmapBuilder;
 
 import java.io.ByteArrayOutputStream;
 
@@ -66,14 +67,14 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
         } else {
             this.blurRadius = radius;
         }
-        Bitmap blurredBitmap = BlurBuilder.blur(context, definedBitmap, this.blurRadius);
+        Bitmap blurredBitmap = Blur.blur(context, definedBitmap, this.blurRadius);
         this.setImageBitmap(blurredBitmap);
 
     }
 
     @Override
     public void setBrightness(int brightnessValue) {
-        Bitmap brightBitmap = BrightnessEffect.getBrightnessEffect(definedBitmap, brightnessValue);
+        Bitmap brightBitmap = Brightness.getBrightnessEffect(definedBitmap, brightnessValue);
         // return final image
         this.setImageBitmap(brightBitmap);
     }
@@ -81,7 +82,7 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     @Override
     public void setShading(int shadingColor) {
 
-        Bitmap shadedBitmap = ShadingEffect.getShadingEffect(definedBitmap, shadingColor);
+        Bitmap shadedBitmap = Shading.getShadingEffect(definedBitmap, shadingColor);
         this.setImageBitmap(shadedBitmap);
 
     }
@@ -97,20 +98,20 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
     @Override
     public void applySaturationFilter(int saturationLevel) {
 
-        Bitmap saturatedBitmap = SaturationFilter.getSaturatedFilter(definedBitmap, saturationLevel);
+        Bitmap saturatedBitmap = Saturation.getSaturatedFilter(definedBitmap, saturationLevel);
         this.setImageBitmap(saturatedBitmap);
     }
 
     @Override
     public void applySnowEffect() {
-        Bitmap snowEffectBitmap = SnowEffect.getSnowEffectBitmap(definedBitmap);
+        Bitmap snowEffectBitmap = Snow.getSnowEffectBitmap(definedBitmap);
         this.setImageBitmap(snowEffectBitmap);
 
     }
 
     @Override
     public void applyFleaEffect() {
-        Bitmap fleaEffectBitmap = FleaEffect.getFleaEffectBitmap(definedBitmap);
+        Bitmap fleaEffectBitmap = Flea.getFleaEffectBitmap(definedBitmap);
         this.setImageBitmap(fleaEffectBitmap);
 
     }
@@ -165,7 +166,7 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
     @Override
     public void setSelectedFrame(int position) {
-        imgOverlayFrame.setImageBitmap(BitmapManipulation.decodeSampledBitmapFromResourcePreview(
+        imgOverlayFrame.setImageBitmap(BitmapBuilder.decodeSampledBitmapFromResourcePreview(
                 context.getResources(), mFrames[position]));
         imgOverlayFrame.setScaleType(ImageView.ScaleType.FIT_XY);
         imgOverlayFrame.setLayoutParams(mOverlayParams);
@@ -191,7 +192,7 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
         bitmapOverlayPicture = bitmapOverlayPicture.createScaledBitmap(bitmapOverlayPicture, bitmapSelectedPicture.getWidth(), bitmapSelectedPicture.getHeight(), true);
 
-        Bitmap bitmap = BitmapManipulation.overlapBitmaps(bitmapSelectedPicture, bitmapOverlayPicture);
+        Bitmap bitmap = BitmapBuilder.overlapBitmaps(bitmapSelectedPicture, bitmapOverlayPicture);
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytesOfImage);
 
         return bitmap;
@@ -218,6 +219,6 @@ public class PicFixImageView extends ImageView implements PicFixViewInterface, C
 
     @Override
     public ColorFilter applyHue(int huelevel) {
-        return HueFilter.adjustHue(huelevel);
+        return Hue.adjustHue(huelevel);
     }
 }

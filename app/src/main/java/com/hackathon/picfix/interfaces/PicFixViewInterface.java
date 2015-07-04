@@ -1,4 +1,4 @@
-package com.hackathon.picfix;
+package com.hackathon.picfix.interfaces;
 
 import android.graphics.Color;
 import android.graphics.ColorFilter;

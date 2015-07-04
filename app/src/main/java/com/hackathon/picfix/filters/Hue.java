@@ -8,8 +8,10 @@ import android.graphics.ColorMatrixColorFilter;
 
 /**
  * Provides Hue Filter effect to the bitmap created
+ *
+ * @date 7/3/15
  */
-public class HueFilter {
+public class Hue {
 
     /**
      * Creates a HUE ajustment ColorFilter

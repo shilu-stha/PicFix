@@ -1,9 +1,9 @@
-package com.hackathon.picfix.frames;
+package com.hackathon.picfix.interfaces;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import com.hackathon.picfix.PicFixImageView;
+import com.hackathon.picfix.widgets.PicFixImageView;
 
 /**
  * Created by shilu shrestha on 7/3/15.

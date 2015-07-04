@@ -1,4 +1,4 @@
-package com.hackathon.picfix.effect;
+package com.hackathon.picfix.filters;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -8,7 +8,7 @@ import android.graphics.Color;
  *
  * @date 7/3/15
  */
-public class BrightnessEffect {
+public class Brightness {
 
     /**
      * This method takes the RGB value of each pixel in the bitmap and then change them according to the brightness value supplied.

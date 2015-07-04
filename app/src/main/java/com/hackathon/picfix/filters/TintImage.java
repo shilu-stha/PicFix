@@ -1,11 +1,13 @@
-package com.hackathon.picfix.effect;
+package com.hackathon.picfix.filters;
 
 import android.graphics.Bitmap;
 
-import com.hackathon.picfix.utils.Constants;
+import com.hackathon.picfix.data.Constants;
 
 /**
- *Provide tint effect to bitmap
+ * Provide tint effect to bitmap
+ *
+ * @date 7/3/15
  */
 public class TintImage {
 
@@ -13,11 +15,10 @@ public class TintImage {
      * This method takes the RGB value of each pixel in the bitmap and then change them according to the tint degree supplied.
      *
      * @param definedBitmap supplied bitmap
-     * @param tintDegree degree of tint value to be set
+     * @param tintDegree    degree of tint value to be set
      * @return tint added bitmap
      */
-
-    public static Bitmap getTintImage(Bitmap definedBitmap, int tintDegree){
+    public static Bitmap getTintImage(Bitmap definedBitmap, int tintDegree) {
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();
 
@@ -37,7 +38,6 @@ public class TintImage {
                 int g = (pix[index] >> 8) & 0xff;
                 int b = pix[index] & 0xff;
                 RY = (70 * r - 59 * g - 11 * b) / 100;
-                GY = (-30 * r + 41 * g - 11 * b) / 100;
                 BY = (-30 * r - 59 * g + 89 * b) / 100;
                 Y = (30 * r + 59 * g + 11 * b) / 100;
                 RYY = (S * BY + C * RY) / 256;
@@ -54,8 +54,6 @@ public class TintImage {
 
         Bitmap tintedBitmap = Bitmap.createBitmap(width, height, definedBitmap.getConfig());
         tintedBitmap.setPixels(pix, 0, width, 0, 0, width, height);
-
-        pix = null;
 
         return tintedBitmap;
     }

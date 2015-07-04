@@ -1,9 +1,9 @@
-package com.hackathon.picfix.effect;
+package com.hackathon.picfix.transform;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
-import com.hackathon.picfix.utils.Constants;
+import com.hackathon.picfix.data.Constants;
 
 /**
  * Flip the bitmap

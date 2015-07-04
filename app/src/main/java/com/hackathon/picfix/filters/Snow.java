@@ -1,26 +1,28 @@
-package com.hackathon.picfix.effect;
+package com.hackathon.picfix.filters;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Matrix;
 
-import com.hackathon.picfix.utils.Constants;
+import com.hackathon.picfix.data.Constants;
 
 import java.util.Random;
 
 /**
- * set Snow Effect in Image view
+ * Sets Snow Effect in Image view
+ *
+ * @date 7/3/15
  */
-public class SnowEffect {
+public class Snow {
 
     /**
      * This method applies Snow effect to the supplied bitmap calculating RGB value
      * according to the COLOR_MAX and COLOR_MIN from {@link Constants}
+     *
      * @param definedBitmap supplied bitmap to be change
      * @return snow effect added bitmap
      */
 
-    public static Bitmap getSnowEffectBitmap (Bitmap definedBitmap){
+    public static Bitmap getSnowEffectBitmap(Bitmap definedBitmap) {
         // get image size
         int width = definedBitmap.getWidth();
         int height = definedBitmap.getHeight();
@@ -30,7 +32,11 @@ public class SnowEffect {
         // random object
         Random random = new Random();
 
-        int R, G, B, index = 0, threshold = 0;
+        int R;
+        int G;
+        int B;
+        int index;
+        int threshold;
         // iteration through pixels
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {

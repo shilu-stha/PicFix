@@ -1,7 +1,9 @@
-package com.hackathon.picfix.utils;
+package com.hackathon.picfix.data;
 
 /**
- * Created by leapfrog on 7/3/15.
+ * Constant values used by library
+ *
+ * @date 7/3/15
  */
 public class Constants {
 
@@ -19,4 +21,8 @@ public class Constants {
     // image flip type definition
     public static final int FLIP_VERTICAL = 1;
     public static final int FLIP_HORIZONTAL = 2;
+
+    // blurr builder definitions
+    private static final float BLUR_RADIUS = 7.5f;
+    public static final float BITMAP_SCALE = 0.6f;
 }

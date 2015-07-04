@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Frames"/>
 
-    <com.hackathon.picfix.PicFixImageView
+    <com.hackathon.picfix.widgets.PicFixImageView
         android:id="@+id/ivTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

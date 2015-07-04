@@ -9,9 +9,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Gallery;
 
-import com.hackathon.picfix.PicFixImageView;
+import com.hackathon.picfix.widgets.PicFixImageView;
 import com.hackathon.picfix.R;
-import com.hackathon.picfix.frames.FrameSelectorAdaptor;
+import com.hackathon.picfix.adapter.FrameSelectorAdaptor;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

@@ -20,7 +20,7 @@
         android:layout_marginTop="20dp"
         android:layout_weight="1">
 
-        <com.hackathon.picfix.PicFixImageView
+        <com.hackathon.picfix.widgets.PicFixImageView
             android:id="@+id/overlayselected"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/minions" />
 
-        <com.hackathon.picfix.PicFixImageView
+        <com.hackathon.picfix.widgets.PicFixImageView
             android:id="@+id/overlayFrame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
