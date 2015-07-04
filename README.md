@@ -3,6 +3,20 @@ Android Image Editing Library
 
 PicFix is an android image editing library with simple, easy support for image manipulation.
 
+# Features
+- set Brightness
+- set Blur Effect
+- set Flea Effect
+- set Hue
+- set Black Filter
+- set Saturation
+- set Snow Effect
+- Flip Image
+- Rotate Image
+- Shade Image
+- Sketch Image
+- Tint Image
+
 # Benefits
 - Hassle free coding
 - increase effieciency
